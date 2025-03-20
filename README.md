@@ -1,6 +1,6 @@
 # TriMod 2.0 Adapter
 
-![](https://codeberg.org/diwou/TriMod_2.0_Adapter/blob/main/Images/TriMod_Adapter_2.0.jpg)
+https://codeberg.org/diwou/TriMod_2.0_Adapter/src/branch/main/Images/TriMod_Adapter_2.0.jpg)
 
 
 
@@ -22,11 +22,11 @@ With the TriMod adapter 2.0, I have replaced the TTL components with a CPLD, as 
 
 To the best of my knowledge, the TriMod Adapter 2.0 was not only the first working adapter based on a CPLD but also the first to offer a parallel cable connection for floppy speeders.
 
-![](https://codeberg.org/diwou/TriMod_2.0_Adapter/blob/main/Images/TriMod_Adapter_2.0_complete_view.jpg)
+https://codeberg.org/diwou/TriMod_2.0_Adapter/src/branch/main/Images/TriMod_Adapter_2.0_complete_view.jpg)
 
 
 
-![](https://codeberg.org/diwou/TriMod_2.0_Adapter/blob/main/Images/TriMod_Adapter_2.0_top_view.jpg)
+https://codeberg.org/diwou/TriMod_2.0_Adapter/src/branch/main/Images/TriMod_Adapter_2.0_top_view.jpg)
 
 
 
@@ -48,7 +48,7 @@ So that I did not always have to make a large mainboard in case of error, I firs
 
 Thus, the first TriMod 2.0 adapter was created in the fall of 2019.
 
-![](https://codeberg.org/diwou/TriMod_2.0_Adapter/blob/main/Images/TriMod_Adapter_CPLD_Version.jpg)
+https://codeberg.org/diwou/TriMod_2.0_Adapter/src/branch/main/Images/TriMod_Adapter_CPLD_Version.jpg)
 
 
 
@@ -106,7 +106,7 @@ A very well described tutorial how to connect the adapter and flash the JED file
 
 The pin assignment is as follows:
 
-![](https://codeberg.org/diwou/TriMod_2.0_Adapter/blob/main/Images/TriMod_Adapter_2.0_pin_header.jpg)
+https://codeberg.org/diwou/TriMod_2.0_Adapter/src/branch/main/Images/TriMod_Adapter_2.0_pin_header.jpg)
 
 The pins for Kernal 2, or 2nd Kernal are currently not active. I have provided them in case you need another Kernal in both modes. For example once SpeedDOS and once Original to switch. 
 
