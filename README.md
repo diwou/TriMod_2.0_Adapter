@@ -3,153 +3,145 @@
 ![](https://codeberg.org/diwou/TriMod_2.0_Adapter/raw/branch/main/Images/TriMod_Adapter_2.0.jpg)
 
 
+## Einleitung
 
-## Introduction
+Mit Hilfe dieses Adapters kann ein Commodore 1541 Floppy-Laufwerk in ein Commodore 2031LP umgewandelt werden. Der Unterschied zwischen den beiden Laufwerken liegt in der Schnittstelle zur Außenwelt.
 
-With the help of this adapter a Commodore 1541 floppy drive can be turned into a Commodore 2031LP. The difference between the two drives is the interface to the outside world.
+Während die 1541 mit dem CBM-Bus zum Anschluss an den Commodore C64 & C128 ausgestattet war, kann die 2031LP an die "großen" Computer von Commodore der PET- und CBM-Serie angeschlossen werden. Zu diesem Zweck verfügt dieses Laufwerk über eine parallele IEEE-488 (auch bekannt als GPIB) Schnittstelle.
 
-While the 1541 was built with the CBM bus for connection to the Commodore C64 & C128, the 2031LP can be connected to the "big" computers from Commodore of the PET and CBM series. For this purpose, this drive has a parallel IEEE-488 (aka GPIB) interface.
+Die Idee, eine Commodore 1541 in eine 2031LP umzuwandeln, stammt ursprünglich von André Fachat. Es gab dazu auch Anleitungen für einen entsprechenden Adapter in den 80er Jahren in der deutschen Computerzeitschrift "64'er".
 
-The idea of turning a Commodore 1541 into a 2031LP originally came from André Fachat. There were also instructions for a corresponding adapter in the 80's in the German computer magazine "64er".
+Ich habe diese Idee weiterentwickelt und so entstand der TriMod-Adapter.
 
-I developed this idea further and so the TriMod adapter was created.
+Das Besondere daran ist, dass er nicht nur umschaltbar ist, sondern auch ein Parallelkabel für Floppy-Speeder wie SpeedDOS bereitstellt.
 
-The special thing about it is that it is not only switchable, but it also provides a parallel cable for floppy speeders like SpeedDOS.
+Die erste Version des TriMod-Adapters war noch diskret mit TTL-Bausteinen aufgebaut und konnte "nur" zwischen dem CBM-Bus und IEEE-488 umschalten.
 
-The first version of the TriMod adapter was still discretely built with TTL devices and could "only" switch between the CBM bus and IEEE-488.
+Mit dem TriMod-Adapter 2.0 habe ich die TTL-Komponenten durch ein CPLD ersetzt sowie die Möglichkeit geschaffen, SpeedDOS usw. wieder zu verwenden.
 
-With the TriMod adapter 2.0, I have replaced the TTL components with a CPLD, as well as the possibility to be able to use SpeedDOS, etc. again.
-
-To the best of my knowledge, the TriMod Adapter 2.0 was not only the first working adapter based on a CPLD but also the first to offer a parallel cable connection for floppy speeders.
+Soweit mir bekannt ist, war der TriMod Adapter 2.0 nicht nur der erste funktionierende Adapter auf CPLD-Basis, sondern auch der erste, der einen Parallelkabelanschluss für Floppy-Speeder bot.
 
 ![](https://codeberg.org/diwou/TriMod_2.0_Adapter/raw/branch/main/Images/TriMod_Adapter_2.0_complete_view.jpg)
-
-
 
 ![](https://codeberg.org/diwou/TriMod_2.0_Adapter/raw/branch/main/Images/TriMod_Adapter_2.0_top_view.jpg)
 
 
+## Hintergrundinformationen
 
-## Background information
+Anfang 2019 hatte ich eine Nachbildung der Hauptplatine des Commodore Floppy 1541 erstellt. Ich hatte einige Laufwerke, bei denen die Platine nicht mehr in gutem Zustand war, teilweise Haarrisse und viele Leiterbahnen mussten von Hand repariert werden.
 
-I had created a replica of the motherboard of the Commodore Floppy 1541 in early 2019. This I had done because I had some drives where the board was no longer in good condition, partly hairline cracks and also many traces had to be repaired by hand.
+Also habe ich mich hingesetzt, viele Schaltpläne durchforstet (leider gibt es keinen einzigen korrekten Schaltplan ohne Fehler) und viele Verbindungen durchgemessen. So entstand im Frühjahr 2019 die erste Version.
 
-So I had sat down, and rummaged through many circuit diagrams (There is unfortunately not a single correct circuit diagram that has no errors) and measured many connections. So the first version was created in spring 2019.
+Gleichzeitig entwickelte ich meinen ersten TriMod-Adapter. Irgendwann kam mir die Idee, das Ganze zu kombinieren.
 
-At the same time I was developing my first TriMod adapter. At some point I got the idea to combine the whole thing. 
+Ich hatte nun einen funktionierenden Schaltplan der 1541 in elektronischer Form. Also entschied ich mich, die Platine der 1541 etwas zu "pimpen".
 
-I now had a working schematic of the 1541 in electronic form. So I decided to "pimp" the circuit board of the 1541 a bit.
+Im Laufe der Entwicklung stellte ich dann fest, dass die Platine natürlich immer größer wurde. Nicht, dass in der 1541 nicht genug Platz gewesen wäre, aber der Preis für die Herstellung stieg immer weiter.
 
-In the course of development, I then also encountered the problem that the board naturally became larger and larger. Not that there wasn't enough space in the 1541, but the price that was called for the production shot up more and more.
+Also kam der Gedanke, das Ganze in ein CPLD zu packen.
 
-So the thought was to pack the whole thing into a CPLD. 
+Damit ich bei Fehlern nicht immer eine große Hauptplatine machen musste, entwickelte ich zuerst einen Adapter, der in eine 1541 eingesteckt werden kann.
 
-So that I did not always have to make a large mainboard in case of error, I first developed an adapter that can be plugged into a 1541.
-
-Thus, the first TriMod 2.0 adapter was created in the fall of 2019.
+So entstand im Herbst 2019 der erste TriMod 2.0 Adapter.
 
 ![](https://codeberg.org/diwou/TriMod_2.0_Adapter/raw/branch/main/Images/TriMod_Adapter_CPLD_Version.jpg)
 
+Dieser Adapter war daher nie für etwas anderes gedacht, als eine neue Systemplatine für die 1541 zu entwickeln. Daher habe ich nicht darauf geachtet, dass er besonders klein ist, gut in die 1541 passt oder das Gehäuse schließbar ist.
+
+Nachdem ich die Dateien für den ersten Adapter auf GitHub veröffentlicht hatte, erhielt ich viele Anfragen, eine kleinere Version zu veröffentlichen.
+
+Mit diesem Adapter möchte ich diesem Wunsch nachkommen.
 
 
-This adapter was therefore never designed for anything other than to develop a new system board for the 1541, so I didn't look for it to be as small as possible, or to fit well in the 1541, or to close the case, etc.
+## Technische Informationen
 
-After I published the files for the first adapter here on GitHub, I got many requests to publish a smaller version.
+Aufgrund der vielen benötigten I/Os wurde ein größeres CPLD in Form des Xilinx XC95144XL-10TQ100 benötigt. Leider ist dieses TQFP-100-Gehäuse so groß, dass es nicht mehr zwischen eine DIP-40-Fassung passt. Zusätzlich werden die beiden Treiberbausteine SN75160 und SN75161 benötigt, die selbst in SMD nicht gerade winzig sind.
 
-With this adapter I would like to fulfill this request.
+Und leider sind diese beiden Komponenten zu groß, um unter eine DIP-40-Fassung zu passen.
 
+Außerdem wollte ich keine SMD-Stiftleisten verwenden, da viele Leute Probleme beim Löten haben. Zudem finde ich diese auch in der Version mit gedrehten Präzisionskontakten recht teuer.
 
+Ich habe daher alles so kompakt wie möglich gehalten und die Komponenten sehr dicht beieinander platziert.
 
-## Technical information
+Dann habe ich die Standard-IDC-Header durch MicroMatch-Steckverbinder ersetzt. Diese sind etwas kleiner, verwenden aber dasselbe Flachbandkabel.
 
-Because of the many I/Os required, a larger CPLD was needed in the form of the Xilinx XC95144XL-10TQ100. Unfortunately, this TQFP-100 device is so large that it no longer fits between a DIP-40 socket. In addition the two driver components SN75160 and SN75161 are needed, which are not necessarily tiny even in SMD.
-
-And unfortunately the last two components are too big to fit underneath a DIP-40 socket.
-
-Furthermore I didn't want to use SMD pin headers, because many people have problems soldering them. In addition I find these also somewhat expensive in the version with turned precision pins.
-
-I therefore kept everything as compact as possible and placed the components quite close to each other.
-
-Then I replaced the standard IDC headers with MicroMatch connectors. They are a bit smaller, but use the same ribbon cable. 
-
-And so the new TriMod 2.0 adapter was created. 
+Und so entstand der neue TriMod 2.0 Adapter.
 
 
+## Funktionen
 
-## Features
+- 3 Schnittstellen: CBM-Bus, Anschluss für Parallelkabel und IEEE-488
+- Umschaltbar zwischen CBM-Bus (inkl. Parallelkabel) und IEEE-488
+- Gleiche Geräte-ID in beiden Modi
+- Beim Umschalten oder Ändern der Geräte-ID wird die Floppy automatisch zurückgesetzt
+- Wenn die Floppy im IEEE-488-Modus ist, kann das CBM-Bus-Kabel weiterhin angeschlossen bleiben, ohne andere CBM-Geräte zu stören
+- Automatisches Kernal-Umschalten
+- Alternatives Kernal möglich (in aktueller Firmware noch nicht aktiviert)
+- LEDs zur Statusanzeige
 
-- 3 interfaces - CBM bus, connection for parallel cable and IEEE-488
 
-- Switchable between CBM bus, incl. parallel cable and IEEE-488
+# Firmware-Flashen
 
-- Set Device ID is the same for both modes
+Zum Aufspielen der Firmware habe ich einen 6-poligen Header (auf der Rückseite der Platine) vorgesehen. Die Pins sind entsprechend beschriftet.
 
-- When switching or changing the Device ID, a reset of the floppy is automatically executed
+Am einfachsten geht dies mit dem Tool **xc3sprog** und einem **FTDI FT232H**-Adapter. Solche Adapter gibt es aus China für etwa 7 Dollar, in Deutschland kosten sie ca. 15 Euro.
 
-- If the floppy is in IEEE-488 mode, the CBM bus cable can still remain connected without disturbing other CBM bus devices. Practical if for example a printer is also connected to the bus. If you then switch to IEEE-488 mode, nothing needs to be changed in the cabling. The floppy is addressed via IEEE-488, while the printer is addressed via the CBM bus.
+Eine sehr gute Anleitung zur Verbindung und zum Flashen der JED-Datei mit xc3sprog findest du hier:
+[https://github.com/1c3d1v3r/neatPLA/tree/master/programming](https://github.com/1c3d1v3r/neatPLA/tree/master/programming)
 
-- Automatic Kernal switching
-
-- Alternative Kernal possible. In both modes it is possible to switch to another kernel (Is not yet enabled) in the current firmware).
-
-- LEDs for status display
-
-  
-
-# Firmware flashing
-
-To upload the firmware, I have provided a 6-pin header (on the back of the board, the pins are labeled accordingly).
-
-The easiest way to do this is with the tool xc3sprog and a FTDI FT232H adapter. You can get this adapter from China for about $7. Here in Germany this adapter costs about 15,- Euro.
-
-A very well described tutorial how to connect the adapter and flash the JED file with xc3sprog can be found at https://github.com/1c3d1v3r/neatPLA/tree/master/programming.
-
-The pin assignment is as follows:
+Die Pinbelegung ist wie folgt:
 
 ![](https://codeberg.org/diwou/TriMod_2.0_Adapter/raw/branch/main/Images/TriMod_Adapter_2.0_pin_header.jpg)
 
-The pins for Kernal 2, or 2nd Kernal are currently not active. I have provided them in case you need another Kernal in both modes. For example once SpeedDOS and once Original to switch. 
+Die Pins für Kernal 2 bzw. einen zweiten Kernal sind derzeit nicht aktiv. Sie sind vorgesehen, falls in beiden Modi ein anderer Kernal benötigt wird, z. B. einmal SpeedDOS und einmal Original.
 
-The lower pin header is double rowed, the right side is always GND. So if necessary jumpers can be plugged to switch the mode or to change the device ID.
+Die untere Stiftleiste ist zweireihig, die rechte Seite ist immer GND. Somit können ggf. Jumper gesteckt werden, um den Modus oder die Geräte-ID zu ändern.
 
-Attention: As soon as you change the device ID or the mode, the 1541 is automatically reset. So this should not be done while the floppy is still writing.
+Achtung: Sobald die Geräte-ID oder der Modus geändert wird, wird die 1541 automatisch zurückgesetzt. Das sollte nicht während eines Schreibvorgangs passieren!
 
-Kernal 1 is simply connected to a 2564 Kernal adapter. The signal is LOW when in CBM bus mode and HIGH in GPIB (IEEE-488) mode.
+Kernal 1 ist einfach mit einem 2564-Kernal-Adapter verbunden. Das Signal ist LOW im CBM-Bus-Modus und HIGH im GPIB- (IEEE-488-) Modus.
 
-To switch on the IEEE-488 mode, just connect the "Mode" pin to GND or set a jumper at the corresponding position.
+Um den IEC-Modus zu aktivieren, einfach den "Mode"-Pin mit GND verbinden oder einen Jumper setzen. Um den IEEE-488-Modus zu aktivieren, den Jumper wieder entfernen.
 
-The device switching is as usual. For Device 8 both jumpers must be closed or both pins must be connected to GND. 
+Die Geräte-ID wird wie üblich geschaltet: Für Gerät 8 müssen beide Jumper geschlossen bzw. beide Pins mit GND verbunden sein.
 
-I have planned to be able to request also the solder jumpers present on the 1541. This is currently not activated, because I personally find these solder jumpers very impractical. However, if this is desired, this can also still be activated in the firmware.
+Geplant ist auch die Abfrage der Lötjumper auf der 1541. Diese Funktion ist aktuell noch nicht aktiviert, kann aber in der Firmware nachgerüstet werden.
+
+
+## Stückliste (BOM)
+
+Hier ist die Liste der benötigten Bauteile:
+
+| Menge | Bezeichnung         | Hersteller         | Herstellernummer              | Beschreibung |
+|-------|---------------------|--------------------|-------------------------------|--------------|
+| 10    | C1–C12 (außer C3/C4) | KEMET              | C0603C104J3RACTU              | KerKo 0.1µF, 25V, X7R, 0603 |
+| 2     | C3, C4              | KEMET              | C0805C106K8RACTU              | KerKo 10µF, 10V, X7R, 0805 |
+| 2     | CN1, CN2           | Preci-Dip          | 830-10-020-10-001101          | 20-pol. 2mm Stiftleiste |
+| 1     | CN3                | MPE-Garry          | 369-1-010-0-NTX-KT0           | MicroMatch-Buchse, 10-pol. |
+| 1     | CN4                | MPE-Garry          | 369-1-024-0-NTX-KT0           | MicroMatch-Buchse, 24-pol. |
+| 1     | CN5                | Sullins            | PRPC003SFAN-RC                | 3-pol. Stiftleiste |
+| 1     | CN6                | Sullins            | PRPC006SFAN-RC                | 6-pol. vertikale Stiftleiste |
+| 1     | CN7                | Sullins            | PRPC005SFAN-RC                | 5-pol. vertikale Stiftleiste |
+| 1     | D1, D2             | Wurth              | 150060BS55040                 | Blaue LED, 0603 |
+| 1     | D3                 | Wurth              | 150060SS55040                 | Rote LED, 0603 |
+| 1     | D4                 | Wurth              | 150060YS55040                 | Gelbe LED, 0603 |
+| 2     | Q1, Q2             | Infineon           | BCR135                        | NPN-Digitaltransistor, SOT-23 |
+| 4     | R1–R4              | Yageo              | RC0603FR-071KL                | 1kΩ Widerstand, 0603 |
+| 1     | RN1                | Yageo              | TC124-FR-0710KL               | Widerstandsarray 4x10kΩ, 0804 |
+| 1     | U1                 | Exar               | SPX5205M5-L-3-3/TR            | LDO 3.3V Regler, SOT-23 |
+| 1     | U2                 | Texas Instruments  | SN75160BDWR                   | GPIB-Treiber |
+| 1     | U3                 | Texas Instruments  | SN75161BDWR                   | GPIB-Treiber |
+| 1     | U4                 | Xilinx             | XC95144XL-10TQ100C            | CPLD, 144 Macrocell, 100 TQFP |
 
 
 
-## BOM
+## Lizenz
 
-Here is the list of components. 
+Der Inhalt dieses Repositories (mit Ausnahme der Verzeichnisse "Docs" und "Software") unterliegt folgender Lizenz:
 
-| Quantity | Designator                                 | Manufacturer       | Manufacturer  Part Number | Description                                                  |
-| -------- | ------------------------------------------ | ------------------ | ------------------------- | ------------------------------------------------------------ |
-| 10       | C1,  C2, C5, C6, C7, C8, C9, C10, C11, C12 | KEMET              | C0603C104J3RACTU          | KEMET     C0603C104J3RACTU       SMD Multilayer Ceramic  Capacitor, 0603 [1608 Metric], 0.1 F, 25 V,   5%, X7R, C Series |
-| 2        | C3,  C4                                    | KEMET              | C0805C106K8RACTU          | KEMET  - C0805C106K8RACTU - CAP, 10µF, 10V, 10%, X7R, 0805   |
-| 2        | CN1,  CN2                                  | Preci-Dip          | 830-10-020-10-001101      | Conn  Header Vert 20POS 2MM                                  |
-| 1        | CN3                                        | MPE-Garry          | 369-1-010-0-NTX-KT0       | Female Header Micro Match 1,27 mm Wire to Board Connector Series 369, 10 pos. |
-| 1        | CN4                                        | MPE-Garry          | 369-1-024-0-NTX-KT0       | Female Header Micro Match 1,27 mm Wire to Board Connector Series 369, 24 pos. |
-| 1        | CN5                                        | Sullins            | PRPC003SFAN-RC            | CONN  HEADER .100" SNGL STR 3POS                             |
-| 1        | CN6                                        | Sullins            | PRPC006SFAN-RC            | CONN  HEADER VERT 6POS 2.54MM                                |
-| 1        | CN7                                        | Sullins            | PRPC005SFAN-RC            | CONN  HEADER VERT 5POS 2.54MM                                |
-| 1        | D1                                         | Wurth  Electronics | 150060BS55040             | LED  BLUE DIFFUSED 0603 SMD                                  |
-| 1        | D2                                         | Wurth  Electronics | 150060BS55040             | LED  BLUE DIFFUSED 0603 SMD                                  |
-| 1        | D3                                         | Wurth  Electronics | 150060SS55040             | LED  RED DIFFUSED 0603 SMD                                   |
-| 1        | D4                                         | Wurth  Electronics | 150060YS55040             | LED  YELLOW DIFFUSED 0603 SMD                                |
-| 2        | Q1,  Q2                                    | Infineon           | BCR135                    | BCR135  Series NPN 50 V 100 mA SMT Silicon Digital Transistor - SOT-23-3 |
-| 4        | R1,  R2, R3, R4                            | Yageo              | RC0603FR-071KL            | RES  SMD 1K OHM 1% 1/10W 0603                                |
-| 1        | RN1                                        | Yageo              | TC124-FR-0710KL           | RES  ARRAY 4 RES 10K OHM 0804                                |
-| 1        | U1                                         | Exar               | SPX5205M5-L-3-3/TR        | LDO  Regulator Pos 3.3V 0.15A 5-Pin SOT-23 T/R               |
-| 1        | U2                                         | Texas  Instruments | SN75160BDWR               | TEXAS  INSTRUMENTS     SN75160BDWR.      GENERAL-PURPOSE INTERFACE  BUS ((NW)) |
-| 1        | U3                                         | Texas  Instruments | SN75161BDWR               | TEXAS  INSTRUMENTS     SN75161BDWR                           |
-| 1        | U4                                         | Xilinx             | XC95144XL-10TQ100C        | IC  CPLD 144MC 7.5NS 100TQFP                                 |
+- [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
+<<<<<<< HEAD
 
 
 ## License
@@ -157,4 +149,7 @@ Here is the list of components.
 The contents of this repository, with the exception of the Docs and Software directories, are released under the following license:
 
 - the "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" (CC BY-NC-SA 4.0) full text of this license is included in the [LICENSE.CC-NC-BY-SA-4.0](https://codeberg.org/diwou/TriMod_2.0_Adapter/raw/branch/main/LICENSE.CC-NC-BY-SA) file and a copy can also be found at https://creativecommons.org/licenses/by-nc-sa/4.0/
+=======
+Der vollständige Lizenztext ist in der Datei [LICENSE.CC-NC-BY-SA-4.0](https://codeberg.org/diwou/TriMod_2.0_Adapter/raw/branch/main/LICENSE.CC-NC-BY-SA) enthalten.
+>>>>>>> b324f39 (Text geändert)
 
